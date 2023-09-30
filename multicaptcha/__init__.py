@@ -1,0 +1,1 @@
+from .concat import captcha_concat

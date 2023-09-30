@@ -1,0 +1,90 @@
+<PopupHelp>:
+    title: 'Help'
+    title_align: 'center'
+    size_hint: None, None
+    size: 450, 350
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    BoxLayout:
+        id: content
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        ScrollView:
+            id: scroll
+            bar_width: 10
+            scroll_type: ['bars', 'content']
+            BoxLayout:
+                id: scroll_content
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+
+<PopupResults>:
+    id: parent_menu
+    title: 'Results'
+    title_align: 'center'
+    content: content
+    size_hint: None, None
+    size: 500, 500
+    pos_hint: {'center_x': .5, 'center_y': .5}
+#    overlay_color: 0, 0, 0, 0
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0.30
+        BoxShadow:
+            pos: self.pos
+            size: self.size
+            offset: -10, -10
+            blur_radius: 50
+            spread_radius: 10, 10
+            border_radius: 50, 50, 50, 50
+    BoxLayout:
+        id: content
+        orientation: 'vertical'
+        pos_hint: {'top': 1}
+        padding: 5
+        spacing: 5
+        Accordion:
+            orientation: 'vertical'
+            AccordionItem:
+                title: 'Text OCR'
+                collapse: False
+                TextInput:
+                    id: text_ocr
+                    text: root.text_ocr
+                    readonly: True
+                    font_size: 15
+#                    size_hint_y: None
+#                    height: self.minimum_height
+            AccordionItem:
+                title: 'Text GPT'
+                collapse: True
+                TextInput:
+                    id: text_ocr_gpt
+                    text: root.text_gpt
+                    readonly: True
+                    font_size: 15
+#                        size_hint_y: None
+#                        height: self.minimum_height
+            AccordionItem:
+                title: 'GPT Explanation'
+                collapse: True
+                TextInput:
+                    id: text_expl_gpt
+                    text: root.text_expl_gpt
+                    readonly: True
+                    font_size: 15
+#                        size_hint_y: None
+#                        height: self.minimum_height
+            AccordionItem:
+                title: 'Metrics'
+                collapse: True
+                TextInput:
+                    id: metrics
+                    text: "TODO: Metrics here"
+                    readonly: True
+                    font_size: 15
+#                        size_hint_y: None
+#                        height: self.minimum_height
+
+
